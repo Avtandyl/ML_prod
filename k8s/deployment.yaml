@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-prod-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-prod
+  template:
+    metadata:
+      labels:
+        app: ml-prod
+    spec:
+      containers:
+      - name: ml-prod
+        image: docker.io/mlmodeler579/ml_prod:latest
+        ports:
+        - containerPort: 8080
