@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ml-prod-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: ml-prod-job
+        image: docker.io/mlmodeler579/ml_prod:latest
+        command: ["curl", "http://ml-prod-service"]
+      restartPolicy: Never
+  backoffLimit: 4
